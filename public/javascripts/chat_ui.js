@@ -25,8 +25,15 @@
       that.display(data.message);
     });
 
-    this.socket.on("changeName", function(newName) {
-      that.userName = newName;
+    this.socket.on("nicknameChangeResponse", function(data) {
+      if (data.success) {
+        console.log(data);
+        that.userName = data.message;
+        var successMessage = "Username changed to " + data.message;
+        that.display(successMessage);
+      } else {
+        that.display(data.message);
+      }
     });
   };
 
@@ -40,7 +47,7 @@
   };
 
   ChatUI.prototype.display = function(message) {
-    var content = this.userName + ": " + message
+    var content = this.userName + ": " + message;
     $('.message-display').html(content);
   };
 
