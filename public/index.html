@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
+  </head>
+  <body>
+    <h1>Hello Node.js App</h1>
+    <div class="message-display">
+
+    </div>
+    <form class="message-input" action="/" method="POST">
+      <label for="message">Message</label>
+      <input type="text" id="message" placeholder="hello there">
+      <input type="submit" id="send-message" value="Send">
+    </form>
+
+    <script>
+      $(function () {
+        var socket = io();
+        var cui = new ChatApp.ChatUI(socket);
+      })
+    </script>
+
+    <script src="javascripts/chat.js" type="text/javascript" charset="utf-8"></script>
+    <script src="javascripts/chat_ui.js" type="text/javascript" charset="utf-8"></script>
+
+  </body>
+</html>
